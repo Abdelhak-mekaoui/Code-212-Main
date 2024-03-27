@@ -2,6 +2,9 @@ package com.example.main.services;
 
 
 import com.example.main.config.ChatBotProxyConfig;
+import com.example.main.dtos.ChatQuestion;
+import com.example.main.dtos.ChatResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -21,13 +24,13 @@ public class ChatBotProxyService {
         this.proxyConfig = proxyConfig;
     }
 
-    public String proxyToFastAPI(String query) {
+    public ChatResponse proxyToFastAPI(ChatQuestion chatQuestion) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<String> entity = new HttpEntity<>(query, headers);
+        HttpEntity<ChatQuestion> entity = new HttpEntity<>(chatQuestion, headers);
 
-        //return restTemplate.postForObject(proxyConfig.getChatBotEndPoint(), entity, String.class);
-        return "{\"response_str\": \"This is a simulation response\", \"query\": \"" + query + "\"}";
+        return restTemplate.postForObject(proxyConfig.getChatBotEndPoint(), entity, ChatResponse.class);
+      //  return "{\"response_str\": \"This is a simulation response\", \"query\": \"" + query + "\"}";
     }
 }

@@ -13,14 +13,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ChatResponse {
-
-    private String chatResponse;
+public class ChatQuestion {
+    private String chatQuestion;
 
     @Override
     public String toString() {
-        return "ChatResponse{" +
-                "message='" + chatResponse + '\'' +
+        return "ChatQuestion{" +
+                "message='" + chatQuestion + '\'' +
                 '}';
-    }
+    
+}
 }

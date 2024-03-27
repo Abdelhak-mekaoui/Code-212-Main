@@ -1,5 +1,6 @@
 package com.example.main.controllers;
 
+import com.example.main.dtos.ChatQuestion;
 import com.example.main.dtos.ChatResponse;
 import com.example.main.services.ChatBotProxyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,14 @@ public class ChatBotProxyController {
     }
 
     @PostMapping("/chat-proxy")
-    public ResponseEntity<ChatResponse> proxyToFastAPI(@RequestBody String query) {
-        String response = chatBotProxyService.proxyToFastAPI(query);
+    public ResponseEntity<ChatResponse> proxyToFastAPI(@RequestBody ChatQuestion chatQuestion) {
+       System.out.println(chatQuestion.toString());
+       ChatResponse chatResponse = chatBotProxyService.proxyToFastAPI(chatQuestion);
 
-        //return ResponseEntity.ok(response);
-        ChatResponse chatResponse = ChatResponse.builder()
-                .message("This is a test response from the server")
-                .build();
+        System.out.println(chatResponse.toString());
+        // ChatResponse chatResponse = ChatResponse.builder()
+        //         .chatResponse(response)
+        //         .build();
 
         return ResponseEntity.ok(chatResponse);
     }

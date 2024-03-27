@@ -4,13 +4,9 @@ spring:
 
 proxy:
   chat-bot:
-    url: http://localhost/v1/8000
+    url: http://localhost:8000/v1/
 
 
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
 server:
   port: 8082
