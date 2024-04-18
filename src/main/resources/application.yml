@@ -1,11 +1,27 @@
-spring:
-  application:
-    name: main-application
-
 proxy:
   chat-bot:
     url: http://localhost:8000/v1/
 
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/code212
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+
+jwt:
+  auth:
+    converter:
+      resource-id: spring
+      principle-attribute: preferred_username
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        web: DEBUG
 
 
 server:
