@@ -26,7 +26,7 @@ public class Demo {
     }
 
     @GetMapping("/userinfo")
-    @PreAuthorize("hasRole('admin_user')")
+    @PreAuthorize("hasRole('manage-account')")
     public String getUserInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
