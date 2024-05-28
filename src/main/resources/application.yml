@@ -14,7 +14,7 @@ spring:
 jwt:
   auth:
     converter:
-      resource-id: spring
+      resource-id: front_end
       principle-attribute: preferred_username
 logging:
   level:

@@ -26,8 +26,9 @@ public class ChatResourceController {
         return chatResourceService.getAllChatResources();
     }
 
-    @PreAuthorize("hasRole('client_admin')")
+    //@PreAuthorize("hasRole('client_admin')")
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('manage-account')")
     public ResponseEntity<ChatResource> getChatResourceById(@PathVariable String id) {
         Optional<ChatResource> chatResource = chatResourceService.getChatResourceById(id);
         return chatResource.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
